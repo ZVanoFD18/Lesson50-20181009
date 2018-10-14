@@ -1,0 +1,72 @@
+.chat{
+    position: fixed;
+    width: 3z00px;
+    top : 0px;
+    right: 0px;
+    border: 1px solid gray;
+    background: silver;
+}
+.chat-title-text{
+    cursor: move;
+    display: inline-block;
+    width: 80%;
+    background: #18aeb0;
+}
+/*Заголовок во время перемещения чата*/
+.chat-title-text-moveing{
+    background: yellow;
+}
+.chat-messages{
+    height: 200px;
+    overflow: auto;
+    border: 1px  dashed gray;
+}
+.messages-row{
+    border: 1px solid blue;
+}
+.messages-sender{
+    display: inline-block;
+    width: 20%;
+    border: 1px solid green;
+    font-weight: bold;
+}
+.messages-text{
+    display: inline-block;
+    width: 80%;
+    border: 1px solid green;
+    box-sizing: border-box;
+}
+.chat-title-icons{
+    width: 19%;
+    text-align: right;
+    display: inline-block;
+    box-sizing: border-box;
+}
+.chat-icon{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.chat-icon:hover{
+    border: 3px solid red;
+    cursor: pointer;
+}
+
+.chat-icon-right{
+    background-image: url('../resources/chat-icon-right.png');
+}
+
+.chat-icon-close{
+    background-image: url('../resources/chat-icon-close.png');
+}
+
+.chat-icon-collapse{
+    background-image: url('../resources/chat-icon-collapse.png');
+}
+
+.chat-closed{
+    display: none;
+    visibility: hidden;
+}
