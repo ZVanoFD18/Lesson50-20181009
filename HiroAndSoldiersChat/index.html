@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/app.css">
 	<link rel="stylesheet" href="css/chat.css">
+	<link rel="stylesheet" href="css/hiro-slider-menu.css">
 	<script type="text/javascript" src="js/Hiro.js"></script>
 	<script type="text/javascript" src="js/Soldier.js"></script>
 	<script type="text/javascript" src="js/App.js"></script>
@@ -49,8 +50,27 @@
 	<!--<div class="menuSelectHiroItem">bbb</div>-->
 	<!--<div class="menuSelectHiroItem">bbb</div>-->
 <!--</div>-->
-
+<div id="hiro-slide-menu" class="hiro-slider-menu">
+    <div class="hiro-slider-menu-pref">Left</div>
+    <div class="hiro-slider-menu-content">
+        <div class="hiro-slider-menu-items">
+            <div class="hiro-slider-menu-item hiro-slider-menu-item1"></div>
+            <div class="hiro-slider-menu-item hiro-slider-menu-item2"></div>
+            <div class="hiro-slider-menu-item hiro-slider-menu-item3"></div>
+            <div class="hiro-slider-menu-item hiro-slider-menu-item4"></div>
+            <div class="hiro-slider-menu-item hiro-slider-menu-item5"></div>
+            <div class="hiro-slider-menu-item hiro-slider-menu-item6"></div>
+            <div class="hiro-slider-menu-item hiro-slider-menu-item7"></div>
+            <div class="hiro-slider-menu-item hiro-slider-menu-item8"></div>
+            <div class="hiro-slider-menu-item hiro-slider-menu-item9"></div>
+            <div class="hiro-slider-menu-item hiro-slider-menu-item10"></div>
+            <div class="hiro-slider-menu-item hiro-slider-menu-item11"></div>
+            <div class="hiro-slider-menu-item hiro-slider-menu-item12"></div>
+        </div>
+    </div>
+</div>
 <div class="gui">
+
 	<button id='btnSelectHiro1' type="button" name="button">Выбрать героя 1</button>
 	<button id='btnSelectHiro2' type="button" name="button">Выбрать героя 2</button>
 	<button id='btnDoBattle' type="button" name="button">Битва</button>
@@ -146,6 +166,9 @@
 		];
 		app.init(arrHiroName);
 	});
+	for (let i =0;i<12;i++){
+
+    }
 	let app = new App();
 
 </script>
