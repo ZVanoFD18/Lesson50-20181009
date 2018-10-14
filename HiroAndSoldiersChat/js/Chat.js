@@ -2,8 +2,10 @@
 
 document.addEventListener('DOMContentLoaded', function () {
     let chat = document.getElementById('hiroes-chat'),
-        form = chat.getElementsByClassName('chat-form')[0];
-    form.elements['button-send'].addEventListener('click', function (event) {
+        chatOpened = chat.querySelector('.chat-opened'),
+        chatCollapsed = chat.querySelector('.chat-collapsed'),
+        chatForm = chatOpened.getElementsByClassName('chat-form')[0];
+    chatForm.elements['button-send'].addEventListener('click', function (event) {
         event.preventDefault();
         let newMessageEl = document.createElement('div');
         newMessageEl.classList.add('messages-row');
@@ -11,56 +13,55 @@ document.addEventListener('DOMContentLoaded', function () {
             let el = document.createElement('span');
             //el.dataset.id="hiro-name"
             el.classList.add('messages-sender');
-            el.innerHTML = form.elements['hiro'].value;
+            el.innerHTML = chatForm.elements['hiro'].value;
             return el;
         })());
         newMessageEl.appendChild((function () {
             let el = document.createElement('span');
             el.classList.add('messages-text');
-            el.innerHTML = form.elements['message'].value;
+            el.innerHTML = chatForm.elements['message'].value;
             return el;
         })());
 
-        chat.querySelector('[data-id="messages"]').appendChild(newMessageEl);
+        chatOpened.querySelector('[data-id="messages"]').appendChild(newMessageEl);
         return false;
     });
-
-    chat.getElementsByClassName('chat-icon-right')[0].addEventListener('click', function (event) {
-        chat.style.right = '0px';
-        chat.style.top = '0px';
-        chat.style.left =  'auto';
-    });
-    chat.getElementsByClassName('chat-icon-close')[0].addEventListener('click', function (event) {
-        chat.classList.add('chat-closed');
+    chatCollapsed.querySelector('.chat-collapsed-text').addEventListener('click', function (event) {
+        chatOpened.classList.toggle('chat-hidden');
+        chatCollapsed.classList.toggle('chat-hidden');
     });
 
-    chat.getElementsByClassName('chat-title-text')[0].addEventListener('mousedown', function (eventDown) {
+    chatOpened.querySelector('.chat-icon-normalize').addEventListener('click', function (event) {
+        chatOpened.style.right = '0px';
+        chatOpened.style.top = '0px';
+        chatOpened.style.left =  'auto';
+    });
+    chatOpened.querySelector('.chat-icon-close').addEventListener('click', function (event) {
+        chatOpened.classList.add('chat-hidden');
+        chatCollapsed.classList.add('chat-hidden');
+    });
+    chatOpened.querySelector('.chat-icon-collapse').addEventListener('click', function (event) {
+        chatOpened.classList.toggle('chat-hidden');
+        chatCollapsed.classList.toggle('chat-hidden');
+    });
+    chatOpened.querySelector('.chat-title-text').addEventListener('mousedown', function (eventDown) {
         eventDown.target.classList.add('chat-title-text-moveing');
         console.log('mousedown');
-        let chat = eventDown.target.closest('.chat'),
-            startPos = chat.getBoundingClientRect(),
+        let startPos = chatOpened.getBoundingClientRect(),
             offsetX = startPos.x - eventDown.clientX,
             offsetY = startPos.y - eventDown.clientY
         ;
-        console.log({
-            chat: chat,
-            startPos: startPos,
-            eventDown: eventDown,
-            offsetX : offsetX,
-            offsetY :offsetY
-        });
-
         document.addEventListener('mouseup', function fDocumentMouseup() {
             console.log('mouseup');
             document.removeEventListener('mouseup', fDocumentMouseup);
             document.removeEventListener('mousemove', fDocumentMousemove);
             eventDown.target.classList.remove('chat-title-text-moveing');
         });
-        //chat.style.right = 'unset'; // https://developer.mozilla.org/en-US/docs/Web/CSS/unset
-        chat.style.right = 'auto';
+        //chatOpened.style.right = 'unset'; // https://developer.mozilla.org/en-US/docs/Web/CSS/unset
+        chatOpened.style.right = 'auto';
         let fDocumentMousemove = function (eventMove) {
-            chat.style.top = eventMove.clientY + offsetY + 'px';
-            chat.style.left = eventMove.clientX + offsetX + 'px';
+            chatOpened.style.top = eventMove.clientY + offsetY + 'px';
+            chatOpened.style.left = eventMove.clientX + offsetX + 'px';
         };
         document.addEventListener('mousemove', fDocumentMousemove);
     });

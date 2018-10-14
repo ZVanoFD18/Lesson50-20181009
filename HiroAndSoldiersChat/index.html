@@ -101,26 +101,33 @@
 		</p>
 	</div>
 	<div id="hiroes-chat" class="chat">
-		<div class="chat-title">
-			<span class="chat-title-text">Chat</span>
-			<span class="chat-title-icons">
-				<span class="chat-icon chat-icon-right"></span>
+		<div class="chat-collapsed chat-hidden">
+			<div class="chat-icon chat-icon-title"></div>
+			<div class="chat-collapsed-text">Мой чат(свернут)</div>
+		</div>
+		<div class="chat-opened">
+			<div class="chat-title">
+				<span class="chat-icon chat-icon-title"></span>
+				<span class="chat-title-text">Мой чат(раскрыт)</span>
+				<span class="chat-title-icons">
+				<span class="chat-icon chat-icon-normalize"></span>
 				<span class="chat-icon chat-icon-collapse"></span>
 				<span class="chat-icon chat-icon-close"></span>
 			</span>
+			</div>
+			<div data-id="messages" class="chat-messages">Сообщения:</div>
+			<form name="chat-form" class="chat-form">
+				<label for="">
+					Герой
+					<input type="text" name="hiro" >
+				</label>
+				<label for="">
+					Сообщение
+					<input type="text" name="message" >
+				</label>
+				<button name="button-send">Send</button>
+			</form>
 		</div>
-		<div data-id="messages" class="chat-messages">Сообщения:</div>
-		<form name="chat-form" class="chat-form">
-			<label for="">
-				Герой
-				<input type="text" name="hiro" >
-			</label>
-			<label for="">
-				Сообщение
-				<input type="text" name="message" >
-			</label>
-			<button name="button-send">Send</button>
-		</form>
 	</div>
 </div>
 </body>
