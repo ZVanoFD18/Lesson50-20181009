@@ -16,12 +16,16 @@ function App() {
         sounds : {
           hiro1 : 'resources/horse-galope.mp3',
           hiro2 : 'resources/zvuk-poezda.mp3',
-        }
+        },
+        /**
+         * @type {HiroSliderMenu}
+         */
+        sliderMenu : undefined
     };
     /**
      * Выполняет инициализацию объека.
      **/
-    this.init = function (hiroNames) {
+    this.init = function (hiroesConfig) {
         if (data.isInit) {
             console.warn('Попытка повторной инициализации.');
             return;
@@ -31,13 +35,38 @@ function App() {
         //     event.cancelBubble = true;
         //     return false;
         // });
-        if (!hiroNames) {
-            throw new Error('Не указаны имена героев.')
+        if (!hiroesConfig) {
+            throw new Error('Не указаны герои.')
         }
-        hiroNames.forEach(function (name) {
-            let hiro = new Hiro(name);
+        hiroesConfig.forEach(function (hiroConfig) {
+            let hiro = new Hiro(hiroConfig.name);
             data.hiroes.push(hiro);
         });
+
+        data.sliderMenu = new HiroSliderMenu({
+            renderTo: document.getElementById('hiro-slide-menu'),
+            items: (function () {
+                let items = [];
+                hiroesConfig.forEach(function (hiroConfig) {
+                   items.push({
+                       name: hiroConfig.name,
+                       classForSlideMenu: hiroConfig.classForSlideMenu
+                   })
+                });
+                return items;
+            }).call(this),
+            onHiroSelected(item, posIndex) {
+                let hiro = undefined;
+                for (let i=0; i<data.hiroes.length; i++){
+                    if (item.name === data.hiroes[i].name){
+                        hiro = data.hiroes[i];
+                        break;
+                    }
+                }
+                onSelectHiro(hiro, posIndex === 1);
+            }
+        });
+
         document.getElementById('btnSelectHiro1').onclick = btnSelectHiro1.bind(this);
         data.hiro1menuSelect.addItemsByCallback(data.hiroes, function (hiro, index) {
            return new ContextMenuItem(hiro.name, index, hiro, function (menuItem) {

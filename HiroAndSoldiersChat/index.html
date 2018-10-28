@@ -158,33 +158,17 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         'use strict';
-        let arrHiroName = [
-            'Вася',
-            'Петя',
-            'Галя',
-            'Поля',
-            'Ира',
-            'Нина',
-            'Саша',
-            'Сергей'
-        ];
-        app.init(arrHiroName);
+        let hiroesConfig = [];
+        for (let i = 0; i < 12; i++) {
+            let item = {
+                name: 'Hiro-' + (i + 1),
+                classForSlideMenu: 'hiro-slider-menu-item' + (i + 1)
+            }
+            hiroesConfig.push(item);
+        }
+
+        app.init(hiroesConfig);
     });
     let app = new App();
-    let menu = new HiroSliderMenu({
-        renderTo: document.getElementById('hiro-slide-menu'),
-        items: (function () {
-            let items = [];
-            for (i = 0; i < 12; i++) {
-                let item = {
-                    name: 'Hiro-' + (i + 1),
-                    classForSlideMenu: 'hiro-slider-menu-item' + (i + 1)
-                }
-                items.push(item);
-            }
-            return items;
-        }).call(this)
-    });
-
 </script>
 </html>
