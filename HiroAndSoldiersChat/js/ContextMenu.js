@@ -83,5 +83,8 @@ ContextMenu.prototype = {
             menuItem = this.items[menuIndex];
         menuItem.handler(menuItem);
         this.domMenu.remove();
+    },
+    destroyMenu : function () {
+        this.domMenu.remove();
     }
 };

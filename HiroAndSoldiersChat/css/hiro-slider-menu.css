@@ -1,15 +1,47 @@
+.hiro-slider-menu{
+    position: relative;
+    height: 180px;
+    display: block;
+    box-sizing: border-box;
+    --border: 1px  solid deeppink ;
+}
+.hiro-slider-menu-prev,
+.hiro-slider-menu-next
+{
+    position: absolute;
+    display: inline-block;
+    border: 1px solid red;
+    box-sizing: border-box;
+    width: 30px;
+    top: 0px;
+    bottom: 0px;
+}
+.hiro-slider-menu-prev:hover,
+.hiro-slider-menu-next:hover
+{
+    background-color: #00AA88;
+}
+.hiro-slider-menu-prev{
+    left : 0px;
+}
+.hiro-slider-menu-next{
+    left : 680px;
+}
 .hiro-slider-menu-content{
     display: inline-block;
-    overflow-x: auto;
-    width: 610px;
+    overflow-x: scroll;
+    width: 650px;
     height: 180px;
+    left: 30px;
+    position: absolute;
+    border: 1px solid red;
+    box-sizing: border-box;
 }
 .hiro-slider-menu-items{
     display: inline-block;
     height: 160px;
     width: 2500px;
 }
-
 .hiro-slider-menu-item{
     display: inline-block;
     width: 200px;
@@ -19,6 +51,9 @@
     box-sizing: border-box;
     border: 1px solid #00AA88;
     background-image: url('../resources/monsters.png');
+}
+.hiro-slider-menu-item:hover{
+    border: 1px dotted red;
 }
 /**----------------------------------------------------------------------------
  *Ряд 1
