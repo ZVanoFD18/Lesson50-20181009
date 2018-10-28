@@ -20,7 +20,11 @@ function App() {
         /**
          * @type {HiroSliderMenu}
          */
-        sliderMenu : undefined
+        sliderMenu : undefined,
+        /**
+         *@type {Chat}
+         */
+        chat : undefined
     };
     /**
      * Выполняет инициализацию объека.
@@ -64,6 +68,10 @@ function App() {
                     }
                 }
                 onSelectHiro(hiro, posIndex === 1);
+            },
+            onGoToChat(item) {
+                data.chat.setSender(item.name);
+                data.chat.open();
             }
         });
 
@@ -80,6 +88,9 @@ function App() {
             });
         }).bindToDom(document.getElementById('btnSelectHiro2'));
         document.getElementById('btnDoBattle').onclick = btnDoBattle.bind(this);
+        data.chat = new Chat({
+            renderTo :  document.getElementById('hiroes-chat')
+        });
         data.isInit = true;
     };
 

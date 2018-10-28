@@ -12,6 +12,7 @@ class HiroSliderMenu {
         this.items = options.items || [];
         this.contextMenu = undefined;
         this.onHiroSelected = this.options.onHiroSelected || this.onHiroSelected;
+        this.onGoToChat = this.options.onGoToChat || this.onGoToChat;
         this.init();
     }
 
@@ -45,7 +46,13 @@ class HiroSliderMenu {
         let itemIndex = +event.target.getAttribute('data-item-index'),
             item = this.items[itemIndex];
         let handlerMenuItem = (function (menuItem) {
-            this.onHiroSelected(item, menuItem.itemId);
+            if (menuItem.itemId === 'go2pos1') {
+                this.onHiroSelected(item, 1);
+            } else if (menuItem.itemId === 'go2pos1') {
+                this.onHiroSelected(item, 2);
+            } else if (menuItem.itemId === 'go2chat') {
+                this.onGoToChat(item);
+            }
         }).bind(this);
         if (this.contextMenu instanceof ContextMenu) {
             this.contextMenu.destroyMenu();
@@ -54,12 +61,17 @@ class HiroSliderMenu {
         this.contextMenu = new ContextMenu();
         this.contextMenu.addItem((new ContextMenuItem())
             .set('text', 'В 1ю позицию')
-            .set('itemId', 1)
+            .set('itemId', 'go2pos1')
             .set('handler', handlerMenuItem)
         );
         this.contextMenu.addItem((new ContextMenuItem())
             .set('text', 'Во 2ю позицию')
-            .set('itemId', 2)
+            .set('itemId', 'go2pos2')
+            .set('handler', handlerMenuItem)
+        );
+        this.contextMenu.addItem((new ContextMenuItem())
+            .set('text', 'Героя в чат')
+            .set('itemId', 'go2chat')
             .set('handler', handlerMenuItem)
         );
         this.contextMenu.showAt(event.pageX, event.pageY);
@@ -67,5 +79,9 @@ class HiroSliderMenu {
 
     onHiroSelected(item, posIndex) {
         console.log('@WARN: Нужно переопределить обработчик onHiroSelected');
+    }
+
+    onGoToChat(item) {
+        console.log('@WARN: Нужно переопределить обработчик onGoToChat');
     }
 };
