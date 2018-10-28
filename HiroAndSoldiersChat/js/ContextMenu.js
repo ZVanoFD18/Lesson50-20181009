@@ -38,7 +38,7 @@ ContextMenu.prototype = {
         };
         domEl.addEventListener('contextmenu', (function (event) {
             event.cancelBubble = true;
-            this.showAt(event.x, event.y);
+            this.showAt(event.pageX, event.pageY);
             return false;
         }).bind(this));
     },
