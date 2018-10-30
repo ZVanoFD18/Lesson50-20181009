@@ -48,7 +48,7 @@ class HiroSliderMenu {
         let handlerMenuItem = (function (menuItem) {
             if (menuItem.itemId === 'go2pos1') {
                 this.onHiroSelected(item, 1);
-            } else if (menuItem.itemId === 'go2pos1') {
+            } else if (menuItem.itemId === 'go2pos2') {
                 this.onHiroSelected(item, 2);
             } else if (menuItem.itemId === 'go2chat') {
                 this.onGoToChat(item);
