@@ -141,15 +141,19 @@
             </div>
             <div data-id="messages" class="chat-messages">Сообщения:</div>
             <form name="chat-form" class="chat-form">
-                <label for="">
-                    Герой
-                    <input type="text" name="hiro">
+                <label for="" class="chat-sender-label">
+                    <span class="label-text">Герой</span>
+                    <span class="label-input">
+                        <input type="text" name="hiro" placeholder="Укажите имя героя">
+                    </span>
                 </label>
-                <label for="">
-                    Сообщение
-                    <input type="text" name="message">
+                <label for="" class="chat-message-label">
+                    <span class="label-text">Сообщение</span>
+                    <span class="label-input">
+                        <input type="text" name="message"  placeholder="Введите сообщение">
+                    </span>
                 </label>
-                <button name="button-send">Send</button>
+                <button class="chat-button-submit" name="button-send">Send</button>
             </form>
         </div>
     </div>

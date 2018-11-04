@@ -94,6 +94,41 @@
 .messages-row{
     border-bottom: 1px solid blue;
 }
+.chat-form>label
+{
+    display: block;
+    position: relative;
+    height: 1.6rem;
+}
+.chat-form>label>.label-text
+{
+    position: absolute;
+    display: inline-block;
+    --width: 100px;
+    bottom: 3px;
+    left: 0;
+    width : 100px;
+    text-align: right;
+    --border-bottom: 1px solid blue;
+}
+.chat-form>label>.label-input
+{
+    position: absolute;
+    left : 104px;
+    right: 0;
+    display: inline-block;
+    --border: 1px solid green;
+}
+.chat-form>label>.label-input>*{
+    --display: block;
+    width: 100%;
+}
+.chat-form>.chat-button-submit{
+    position: relative;
+    width: 100px;
+    right : 0;
+}
+
 /*В строке сообщения стиль для "Отправитель"*/
 .messages-sender{
     display: inline-block;
